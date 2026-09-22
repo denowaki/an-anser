@@ -7,6 +7,9 @@
     "server",
     "shared"
   ],
+  "overrides": {
+    "deepmerge-ts": "^7.1.5"
+  },
   "scripts": {
     "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
     "build": "npm run build --prefix client",
