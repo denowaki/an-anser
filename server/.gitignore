@@ -1,0 +1,9 @@
+node_modules
+*.log
+.env
+prisma/*.db
+
+# Prisma generated client (custom output path)
+src/generated/prisma/
+*.dylib
+*.node
