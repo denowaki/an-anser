@@ -1,31 +1,24 @@
 {
-  "name": "al-anser-server",
+  "name": "al-anser-electronic",
   "version": "1.0.0",
-  "description": "Backend server for AL Anser Electronic e-commerce website",
-  "type": "module",
-  "main": "dist/index.js",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server",
+    "shared"
+  ],
   "scripts": {
-    "dev": "nodemon src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "prisma:studio": "prisma studio",
-    "prisma:generate": "prisma generate",
-    "prisma:db:push": "prisma db push",
-    "seed": "node --loader ts-node/esm src/seed.ts"
-  },
-  "dependencies": {
-    "express": "^4.18.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "prisma": "^6.5.0",
-    "@prisma/client": "^6.5.0"
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix client",
+    "install:client": "npm install --prefix client --legacy-peer-deps",
+    "install:server": "npm install --prefix server --legacy-peer-deps",
+    "install:all": "npm install --all",
+    "seed": "npm run seed --prefix server",
+    "start": "npm run start --prefix server"
   },
   "devDependencies": {
-    "typescript": "^5.5.4",
-    "ts-node": "^10.9.2",
-    "nodemon": "^3.1.7",
-    "@types/node": "^22.10.7",
-    "@types/cors": "^2.8.17"
+    "concurrently": "^9.1.0",
+    "wait-on": "^8.0.0"
   },
   "engines": {
     "node": ">=18"
